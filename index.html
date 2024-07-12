@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+     .main {
+            display: flex;
+            justify-content: center;
+            padding: 30px;
+            gap: 20px;
+        }
+        input {
+            width: 100px;
+            padding: 10px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: black;
+            color: white;
+            cursor: pointer;
+            position: absolute;
+            left: 50%;
+            z-index: 1;
+        }
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 50px auto;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 80px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #f9f9f9;
+}
+
+td {
+    color: #555;
+}
+
+td.completed {
+    text-decoration: line-through;
+    color: #999;
+}
+
+@media (max-width: 600px) {
+    .container {
+        width: 100%;
+        margin: 20px;
+        padding: 10px;
+    }
+
+    th, td {
+        padding: 5px;
+    }
+}
+
+</style>
+<body>
+    <div class="main">
+        <input type="text" id="task" placeholder="Task">
+        <input type="date" id="date" placeholder="Due date">
+        <input type="text" id="priority" placeholder="Priority">
+        <input type="text" id="status" placeholder="Status">
+    </div>
+    <button onclick="addTask()">Submit</button>
+
+    <div class="container">
+        <h1>To-Do List</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Task</th>
+                    <th>Due Date</th>
+                    <th>Priority</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="task-list">
+            
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        const addTask = () => {
+            const task = document.getElementById('task').value;
+            const date = document.getElementById('date').value;
+            const priority = document.getElementById('priority').value;
+            const status = document.getElementById('status').value;
+
+           
+            const newRow = document.createElement('tr');
+
+            const taskCell = document.createElement('td');
+            taskCell.textContent = task;
+            newRow.appendChild(taskCell);
+
+            const dateCell = document.createElement('td');
+            dateCell.textContent = date;
+            newRow.appendChild(dateCell);
+
+            const priorityCell = document.createElement('td');
+            priorityCell.textContent = priority;
+            newRow.appendChild(priorityCell);
+
+            const statusCell = document.createElement('td');
+            statusCell.textContent = status;
+            newRow.appendChild(statusCell);
+
+           
+            document.getElementById('task-list').appendChild(newRow);
+
+        
+            document.getElementById('task').value = '';
+            document.getElementById('date').value = '';
+            document.getElementById('priority').value = '';
+            document.getElementById('status').value = '';
+        }
+    </script>
+</body>
+</html>
